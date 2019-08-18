@@ -1,4 +1,5 @@
 from vpython import * #for 3D animations and cube
+import random #for randomizing the cube
 def make_small_cube(colorsidefront, colorsideleft, colorsideright, colorsidedown, colorsideup, colorsideback):
     colorsidefront = colorsidefront
     colorsideleft = colorsideleft
@@ -840,22 +841,36 @@ def left_rotation_counter():
     c23.left_turn_counter()
     c25.left_turn_counter()
 
-#comands for testing
-front_rotation_clock()
-front_rotation_counter()
+#randomizer
+random_num1 = random.randint(20,135)
+while random_num1 >0:
+    random_num2 = random.randint(0,3)
+    random_num3 = random.randint(0,3)
+    random_num4 = random.randint(0,3)
+    random_num5 = random.randint(0,3)
+    random_num6 = random.randint(0,3)
+    random_num7 = random.randint(0,3)
+    while random_num2 > 0:
+        front_rotation_clock()
+        random_num2 -= 1
+    while random_num3 > 0:
+        top_rotation_clock()
+        random_num3 -= 1
+    while random_num4 > 0:
+        right_rotation_clock()
+        random_num4 -= 1
+    while random_num5 > 0:
+        left_rotation_clock()
+        random_num5 -= 1
+    while random_num6 > 0:
+        down_rotation_clock()
+        random_num6 -= 1
+    while random_num7 > 0:
+        back_rotation_clock()
+        random_num7 -= 1
+    random_num1 -= 1
+   
 
-top_rotation_clock()
-top_rotation_counter()
+#A.I. algorithems to solve a cube
 
-right_rotation_clock()
-right_rotation_counter()
-
-left_rotation_clock()
-left_rotation_counter()
-
-down_rotation_clock()
-down_rotation_counter()
-
-back_rotation_clock()
-
-back_rotation_counter()
+#The cross
