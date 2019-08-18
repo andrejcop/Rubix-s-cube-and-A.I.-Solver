@@ -842,7 +842,7 @@ def left_rotation_counter():
     c25.left_turn_counter()
 
 #randomizer
-random_num1 = random.randint(20,135)
+random_num1 = random.randint(200,500)
 while random_num1 >0:
     random_num2 = random.randint(0,3)
     random_num3 = random.randint(0,3)
@@ -874,3 +874,44 @@ while random_num1 >0:
 #A.I. algorithems to solve a cube
 
 #The cross
+def cross_filler(pos):
+    if pos == vector(3,0,-1):
+        right_rotation_clock()
+        left_rotation_counter()
+        down_rotation_counter()
+        right_rotation_counter()
+        left_rotation_clock()
+    elif pos == vector(2,0,0):
+        back_rotation_clock()
+        front_rotation_counter()
+        down_rotation_counter()
+        back_rotation_counter()
+        front_rotation_clock()
+    elif pos == vector(0,0,-1):
+        right_rotation_counter()
+        left_rotation_clock()
+        down_rotation_counter()
+        right_rotation_clock()
+        left_rotation_counter()
+    elif pos == vector(1,0,-2):
+        back_rotation_counter()
+        front_rotation_clock()
+        down_rotation_counter()
+        back_rotation_clock()
+        front_rotation_counter()
+if c2.position != c2.correct_position:
+    if c2.position == vector(1,0,0):
+        front_rotation_clock()
+        front_rotation_clock()
+    elif c2.position == vector(0,1,0):
+        front_rotation_clock()
+    elif c2.position == vector(3,2,0):
+        front_rotation_counter()
+    elif c2.position == vector(3,0,-1):
+        cross_filler(c2.position)
+    elif c2.position == vector(2,0,-2):
+        down_rotation_counter()
+        cross_filler(c2.position)
+    elif c2.position == vector(0,0,-1):
+        down_rotation_clock()
+        cross_filler(c2.position)
