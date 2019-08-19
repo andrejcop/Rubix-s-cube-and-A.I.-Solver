@@ -1,3 +1,4 @@
+
 from vpython import * #for 3D animations and cube
 import random #for randomizing the cube
 def make_small_cube(colorsidefront, colorsideleft, colorsideright, colorsidedown, colorsideup, colorsideback):
@@ -268,207 +269,319 @@ class corner_cube:
             self.name.rotate(angle=1.57079633, axis=vector(0,0,1), origin=vector(0,0,0))
             self.name.pos = self.position
 class edge_cube:
-    def __init__(self,position, correct_position, name):
+    def __init__(self,position, correct_position, name, orientation, correct_orientation):
         self.position = position
         self.correct_position = correct_position
         self.name = name
+        self.orientation = orientation
+        self.correct_orientation = correct_orientation
     def front_turn_clock(self):
         if self.position == vector(1,0,0):
             self.position = vector(0,1,0)
             self.name.rotate(angle=-1.57079633, axis=vector(0,0,1), origin=vector(0,0,0))
             self.name.pos = self.position
+            x = self.orientation["vector(0,0,1)"] -1
+            self.orientation["vector(0,0,1)"] =  x
         elif self.position == vector(0,1,0):
             self.position = vector(1,2,0)
             self.name.rotate(angle=-1.57079633, axis=vector(0,0,1), origin=vector(0,0,0))
             self.name.pos = self.position
+            x = self.orientation["vector(0,0,1)"] -1
+            self.orientation["vector(0,0,1)"] =  x
         elif self.position == vector(1,2,0):
             self.position = vector(2,1,0)
             self.name.rotate(angle=-1.57079633, axis=vector(0,0,1), origin=vector(0,0,0))
             self.name.pos = self.position
+            x = self.orientation["vector(0,0,1)"] -1
+            self.orientation["vector(0,0,1)"] =  x
         elif self.position == vector(2,1,0):
             self.position = vector(1,0,0)
             self.name.rotate(angle=-1.57079633, axis=vector(0,0,1), origin=vector(0,0,0))
             self.name.pos = self.position
+            x = self.orientation["vector(0,0,1)"] -1
+            self.orientation["vector(0,0,1)"] =  x
+        
+        if self.orientation["vector(0,0,1)"] == 4 or self.orientation["vector(0,0,1)"] ==  -4:
+            self.orientation["vector(0,0,1)"] = 0
 
     def front_turn_counter(self):
         if self.position == vector(1,0,0):
             self.position = vector(2,1,0)
             self.name.rotate(angle=1.57079633, axis=vector(0,0,1), origin=vector(0,0,0))
             self.name.pos = self.position
+            x = self.orientation["vector(0,0,1)"] +1
+            self.orientation["vector(0,0,1)"] =  x
         elif self.position == vector(0,1,0):
             self.position = vector(1,0,0)
             self.name.rotate(angle=1.57079633, axis=vector(0,0,1), origin=vector(0,0,0))
             self.name.pos = self.position
+            x = self.orientation["vector(0,0,1)"] +1
+            self.orientation["vector(0,0,1)"] =  x
         elif self.position == vector(1,2,0):
             self.position = vector(0,1,0)
             self.name.rotate(angle=1.57079633, axis=vector(0,0,1), origin=vector(0,0,0))
             self.name.pos = self.position
+            x = self.orientation["vector(0,0,1)"] +1
+            self.orientation["vector(0,0,1)"] =  x
         elif self.position == vector(2,1,0):
             self.position = vector(1,2,0)
             self.name.rotate(angle=1.57079633, axis=vector(0,0,1), origin=vector(0,0,0))
             self.name.pos = self.position
+            x = self.orientation["vector(0,0,1)"] +1
+            self.orientation["vector(0,0,1)"] =  x
+        if self.orientation["vector(0,0,1)"] == 4 or self.orientation["vector(0,0,1)"] ==  -4:
+            self.orientation["vector(0,0,1)"] = 0
 
     def right_turn_clock(self):
         if self.position == vector(2,1,0):
             self.position = vector(2,2,-1)
             self.name.rotate(angle=-1.57079633, axis=vector(1,0,0), origin=vector(0,0,0))
             self.name.pos = self.position
+            x = self.orientation["vector(1,0,0)"] -1
+            self.orientation["vector(1,0,0)"] =  x
         elif self.position == vector(2,2,-1):
             self.position = vector(2,1,-2)
             self.name.rotate(angle=-1.57079633, axis=vector(1,0,0), origin=vector(0,0,0))
             self.name.pos = self.position
+            x = self.orientation["vector(1,0,0)"] -1
+            self.orientation["vector(1,0,0)"] =  x
         elif self.position == vector(2,1,-2):
             self.position = vector(2,0,-1)
             self.name.rotate(angle=-1.57079633, axis=vector(1,0,0), origin=vector(0,0,0))
             self.name.pos = self.position
+            x = self.orientation["vector(1,0,0)"] -1
+            self.orientation["vector(1,0,0)"] =  x
         elif self.position == vector(2,0,-1):
             self.position = vector(2,1,0)
             self.name.rotate(angle=-1.57079633, axis=vector(1,0,0), origin=vector(0,0,0))
             self.name.pos = self.position
+            x = self.orientation["vector(1,0,0)"] -1
+            self.orientation["vector(1,0,0)"] =  x
+        if self.orientation["vector(1,0,0)"] == 4 or self.orientation["vector(1,0,0)"] ==  -4:
+            self.orientation["vector(1,0,0)"] = 0
 
     def right_turn_counter(self):
         if self.position == vector(2,1,0):
             self.position = vector(2,0,-1)
             self.name.rotate(angle=1.57079633, axis=vector(1,0,0), origin=vector(0,0,0))
             self.name.pos = self.position
+            x = self.orientation["vector(1,0,0)"] +1
+            self.orientation["vector(1,0,0)"] =  x
         elif self.position == vector(2,2,-1):
             self.position = vector(2,1,0)
             self.name.rotate(angle=1.57079633, axis=vector(1,0,0), origin=vector(0,0,0))
             self.name.pos = self.position
+            x = self.orientation["vector(1,0,0)"] +1
+            self.orientation["vector(1,0,0)"] =  x
         elif self.position == vector(2,1,-2):
             self.position = vector(2,2,-1)
             self.name.rotate(angle=1.57079633, axis=vector(1,0,0), origin=vector(0,0,0))
             self.name.pos = self.position
+            x = self.orientation["vector(1,0,0)"] +1
+            self.orientation["vector(1,0,0)"] =  x
         elif self.position == vector(2,0,-1):
             self.position = vector(2,1,-2)
             self.name.rotate(angle=1.57079633, axis=vector(1,0,0), origin=vector(0,0,0))
             self.name.pos = self.position
+            x = self.orientation["vector(1,0,0)"] +1
+            self.orientation["vector(1,0,0)"] =  x
+        if self.orientation["vector(1,0,0)"] == 4 or self.orientation["vector(1,0,0)"] ==  -4:
+            self.orientation["vector(1,0,0)"] = 0
+
     
     def left_turn_counter(self):
         if self.position == vector(0,1,0):
             self.position = vector(0,2,-1)
             self.name.rotate(angle=-1.57079633, axis=vector(1,0,0), origin=vector(0,0,0))
             self.name.pos = self.position
+            x = self.orientation["vector(1,0,0)"] -1
+            self.orientation["vector(1,0,0)"] =  x
         elif self.position == vector(0,2,-1):
             self.position = vector(0,1,-2)
             self.name.rotate(angle=-1.57079633, axis=vector(1,0,0), origin=vector(0,0,0))
             self.name.pos = self.position
+            x = self.orientation["vector(1,0,0)"] -1
+            self.orientation["vector(1,0,0)"] =  x
         elif self.position == vector(0,1,-2):
             self.position = vector(0,0,-1)
             self.name.rotate(angle=-1.57079633, axis=vector(1,0,0), origin=vector(0,0,0))
             self.name.pos = self.position
+            x = self.orientation["vector(1,0,0)"] -1
+            self.orientation["vector(1,0,0)"] =  x
         elif self.position == vector(0,0,-1):
             self.position = vector(0,1,0)
             self.name.rotate(angle=-1.57079633, axis=vector(1,0,0), origin=vector(0,0,0))
             self.name.pos = self.position
+            x = self.orientation["vector(1,0,0)"] -1
+            self.orientation["vector(1,0,0)"] =  x
+        if self.orientation["vector(1,0,0)"] == 4 or self.orientation["vector(1,0,0)"] ==  -4:
+            self.orientation["vector(1,0,0)"] = 0
+
 
     def left_turn_clock(self):
         if self.position == vector(0,1,0):
             self.position = vector(0,0,-1)
             self.name.rotate(angle=1.57079633, axis=vector(1,0,0), origin=vector(0,0,0))
             self.name.pos = self.position
+            self.orientation["vector(1,0,0)"] +=1
         elif self.position == vector(0,2,-1):
             self.position = vector(0,1,0)
             self.name.rotate(angle=1.57079633, axis=vector(1,0,0), origin=vector(0,0,0))
             self.name.pos = self.position
+            self.orientation["vector(1,0,0)"] += 1
         elif self.position == vector(0,1,-2):
             self.position = vector(0,2,-1)
             self.name.rotate(angle=1.57079633, axis=vector(1,0,0), origin=vector(0,0,0))
             self.name.pos = self.position
+            self.orientation["vector(1,0,0)"] +=1
         elif self.position == vector(0,0,-1):
             self.position = vector(0,1,-2)
             self.name.rotate(angle=1.57079633, axis=vector(1,0,0), origin=vector(0,0,0))
             self.name.pos = self.position
+            self.orientation["vector(1,0,0)"] +=1
+        if self.orientation["vector(1,0,0)"] == 4 or self.orientation["vector(1,0,0)"] ==  -4:
+            self.orientation["vector(1,0,0)"] = 0
 
     def top_turn_clock(self):
         if  self.position == vector(1,2,0):
             self.position = vector(0,2,-1)
             self.name.rotate(angle=-1.57079633, axis=vector(0,1,0), origin=vector(0,0,0))
             self.name.pos = self.position
+            x = self.orientation["vector(0,1,0)"] -1
+            self.orientation["vector(0,1,0)"] =  x
         elif  self.position == vector(0,2,-1):
             self.position = vector(1,2,-2)
             self.name.rotate(angle=-1.57079633, axis=vector(0,1,0), origin=vector(0,0,0))
             self.name.pos = self.position
+            x = self.orientation["vector(0,1,0)"] -1
+            self.orientation["vector(0,1,0)"] =  x
         elif  self.position == vector(1,2,-2):
             self.position = vector(2,2,-1)
             self.name.rotate(angle=-1.57079633, axis=vector(0,1,0), origin=vector(0,0,0))
             self.name.pos = self.position
+            x = self.orientation["vector(0,1,0)"] -1
+            self.orientation["vector(0,1,0)"] =  x
         elif  self.position == vector(2,2,-1):
             self.position = vector(1,2,0)
             self.name.rotate(angle=-1.57079633, axis=vector(0,1,0), origin=vector(0,0,0))
             self.name.pos = self.position
+            x = self.orientation["vector(0,1,0)"] -1
+            self.orientation["vector(0,1,0)"] =  x
+        if self.orientation["vector(0,1,0)"] == 4 or self.orientation["vector(0,1,0)"] ==  -4:
+            self.orientation["vector(0,1,0)"] = 0
+
     
     def top_turn_counter(self):
         if  self.position == vector(1,2,0):
             self.position = vector(2,2,-1)
             self.name.rotate(angle=1.57079633, axis=vector(0,1,0), origin=vector(0,0,0))
             self.name.pos = self.position
+            x = self.orientation["vector(0,1,0)"] +1
+            self.orientation["vector(0,1,0)"] =  x
         elif  self.position == vector(0,2,-1):
             self.position = vector(1,2,0)
             self.name.rotate(angle=1.57079633, axis=vector(0,1,0), origin=vector(0,0,0))
             self.name.pos = self.position
+            x = self.orientation["vector(0,1,0)"] +1
+            self.orientation["vector(0,1,0)"] =  x
         elif  self.position == vector(1,2,-2):
             self.position = vector(0,2,-1)
             self.name.rotate(angle=1.57079633, axis=vector(0,1,0), origin=vector(0,0,0))
             self.name.pos = self.position
+            x = self.orientation["vector(0,1,0)"] +1
+            self.orientation["vector(0,1,0)"] =  x
         elif  self.position == vector(2,2,-1):
             self.position = vector(1,2,-2)
             self.name.rotate(angle=1.57079633, axis=vector(0,1,0), origin=vector(0,0,0))
             self.name.pos = self.position
+            x = self.orientation["vector(0,1,0)"] +1
+            self.orientation["vector(0,1,0)"] =  x
+        if self.orientation["vector(0,1,0)"] == 4 or self.orientation["vector(0,1,0)"] ==  -4:
+            self.orientation["vector(0,1,0)"] = 0
 
     def down_turn_counter(self):
         if  self.position == vector(1,0,0):
             self.position = vector(0,0,-1)
             self.name.rotate(angle=-1.57079633, axis=vector(0,1,0), origin=vector(0,0,0))
             self.name.pos = self.position
+            x = self.orientation["vector(0,1,0)"] -1
+            self.orientation["vector(0,1,0)"] =  x
         elif self.position == vector(0,0,-1):
             self.position = vector(1,0,-2)
             self.name.rotate(angle=-1.57079633, axis=vector(0,1,0), origin=vector(0,0,0))
             self.name.pos = self.position
+            x = self.orientation["vector(0,1,0)"] -1
+            self.orientation["vector(0,1,0)"] =  x
         elif self.position == vector(1,0,-2):
             self.position = vector(2,0,-1)
             self.name.rotate(angle=-1.57079633, axis=vector(0,1,0), origin=vector(0,0,0))
             self.name.pos = self.position
+            x = self.orientation["vector(0,1,0)"] -1
+            self.orientation["vector(0,1,0)"] =  x
         elif self.position == vector(2,0,-1):
             self.position = vector(1,0,0)
             self.name.rotate(angle=-1.57079633, axis=vector(0,1,0), origin=vector(0,0,0))
             self.name.pos = self.position
+            x = self.orientation["vector(0,1,0)"] -1
+            self.orientation["vector(0,1,0)"] =  x
+        if self.orientation["vector(0,1,0)"] == 4 or self.orientation["vector(0,1,0)"] ==  -4:
+            self.orientation["vector(0,1,0)"] = 0
 
     def down_turn_clock(self):
         if  self.position == vector(1,0,0):
             self.position = vector(2,0,-1)
             self.name.rotate(angle=1.57079633, axis=vector(0,1,0), origin=vector(0,0,0))
             self.name.pos = self.position
+            x = self.orientation["vector(0,1,0)"] +1
+            self.orientation["vector(0,1,0)"] =  x
         elif self.position == vector(0,0,-1):
             self.position = vector(1,0,0)
             self.name.rotate(angle=1.57079633, axis=vector(0,1,0), origin=vector(0,0,0))
             self.name.pos = self.position
+            x = self.orientation["vector(0,1,0)"] +1
+            self.orientation["vector(0,1,0)"] =  x
         elif self.position == vector(1,0,-2):
             self.position = vector(0,0,-1)
             self.name.rotate(angle=1.57079633, axis=vector(0,1,0), origin=vector(0,0,0))
             self.name.pos = self.position
+            x = self.orientation["vector(0,1,0)"] +1
+            self.orientation["vector(0,1,0)"] =  x
         elif self.position == vector(2,0,-1):
             self.position = vector(1,0,-2)
             self.name.rotate(angle=1.57079633, axis=vector(0,1,0), origin=vector(0,0,0))
             self.name.pos = self.position
+            x = self.orientation["vector(0,1,0)"] +1
+            self.orientation["vector(0,1,0)"] =  x
+        if self.orientation["vector(0,1,0)"] == 4 or self.orientation["vector(0,1,0)"] ==  -4:
+            self.orientation["vector(0,1,0)"] = 0
 
     def back_turn_counter(self):
         if self.position == vector(1,0,-2):
             self.position = vector(0,1,-2)
             self.name.rotate(angle=-1.57079633, axis=vector(0,0,1), origin=vector(0,0,0))
             self.name.pos = self.position
+            x = self.orientation["vector(0,0,1)"] -1
+            self.orientation["vector(0,0,1)"] =  x
         elif self.position == vector(0,1,-2):
             self.position = vector(1,2,-2)
             self.name.rotate(angle=-1.57079633, axis=vector(0,0,1), origin=vector(0,0,0))
             self.name.pos = self.position
+            x = self.orientation["vector(0,0,1)"] -1
+            self.orientation["vector(0,0,1)"] =  x
         elif self.position == vector(1,2,-2):
             self.position = vector(2,1,-2)
             self.name.rotate(angle=-1.57079633, axis=vector(0,0,1), origin=vector(0,0,0))
             self.name.pos = self.position
+            x = self.orientation["vector(0,0,1)"] -1
+            self.orientation["vector(0,0,1)"] =  x
         elif self.position == vector(2,1,-2):
             self.position = vector(1,0,-2)
             self.name.rotate(angle=-1.57079633, axis=vector(0,0,1), origin=vector(0,0,0))
             self.name.pos = self.position
+            x = self.orientation["vector(0,0,1)"] -1
+            self.orientation["vector(0,0,1)"] =  x
+        if self.orientation["vector(0,0,1)"] == 4 or self.orientation["vector(0,0,1)"] ==  -4:
+            self.orientation["vector(0,0,1)"] = 0
     
     def back_turn_clock(self):
 
@@ -476,18 +589,28 @@ class edge_cube:
             self.position = vector(2,1,-2)
             self.name.rotate(angle=1.57079633, axis=vector(0,0,1), origin=vector(0,0,0))
             self.name.pos = self.position
+            x = self.orientation["vector(0,0,1)"] +1
+            self.orientation["vector(0,0,1)"] =  x
         elif self.position == vector(0,1,-2):
             self.position = vector(1,0,-2)
             self.name.rotate(angle=1.57079633, axis=vector(0,0,1), origin=vector(0,0,0))
             self.name.pos = self.position
+            x = self.orientation["vector(0,0,1)"] +1
+            self.orientation["vector(0,0,1)"] =  x
         elif self.position == vector(1,2,-2):
             self.position = vector(0,1,-2)
             self.name.rotate(angle=1.57079633, axis=vector(0,0,1), origin=vector(0,0,0))
             self.name.pos = self.position
+            x = self.orientation["vector(0,0,1)"] +1
+            self.orientation["vector(0,0,1)"] =  x
         elif self.position == vector(2,1,-2):
             self.position = vector(1,2,-2)
             self.name.rotate(angle=1.57079633, axis=vector(0,0,1), origin=vector(0,0,0))
             self.name.pos = self.position
+            x = self.orientation["vector(0,0,1)"] +1
+            self.orientation["vector(0,0,1)"] =  x
+        if self.orientation["vector(0,0,1)"] == 4 or self.orientation["vector(0,0,1)"] ==  -4:
+            self.orientation["vector(0,0,1)"] = 0
 #here are all possitions of small cubes when the rubix is solved
 v1 = vector(0,2,0) 
 v2 = vector(1,2,0)
@@ -515,6 +638,32 @@ v23 = vector(1,2,-2)
 v24 = vector(1,0,-1)
 v25 = vector(1,0,-2)
 v26 = vector(1,1,-2) 
+
+orient1 = {"vector(0,0,1)" : 0,"vector(1,0,0)" : 0,"vector(0,1,0)" : 0}
+orient2 = {"vector(0,0,1)" : 0,"vector(1,0,0)" : 0,"vector(0,1,0)" : 0}
+orient3 = {"vector(0,0,1)" : 0,"vector(1,0,0)" : 0,"vector(0,1,0)" : 0}
+orient4 = {"vector(0,0,1)" : 0,"vector(1,0,0)" : 0,"vector(0,1,0)" : 0}
+orient5 = {"vector(0,0,1)" : 0,"vector(1,0,0)" : 0,"vector(0,1,0)" : 0}
+orient6= {"vector(0,0,1)" : 0,"vector(1,0,0)" : 0,"vector(0,1,0)" : 0}
+orient7 = {"vector(0,0,1)" : 0,"vector(1,0,0)" : 0,"vector(0,1,0)" : 0}
+orient8 = {"vector(0,0,1)" : 0,"vector(1,0,0)" : 0,"vector(0,1,0)" : 0}
+orient9 = {"vector(0,0,1)" : 0,"vector(1,0,0)" : 0,"vector(0,1,0)" : 0}
+orient10 = {"vector(0,0,1)" : 0,"vector(1,0,0)" : 0,"vector(0,1,0)" : 0}
+orient11 = {"vector(0,0,1)" : 0,"vector(1,0,0)" : 0,"vector(0,1,0)" : 0}
+orient12 = {"vector(0,0,1)" : 0,"vector(1,0,0)" : 0,"vector(0,1,0)" : 0}
+orient13 = {"vector(0,0,1)" : 0,"vector(1,0,0)" : 0,"vector(0,1,0)" : 0}
+orient14 = {"vector(0,0,1)" : 0,"vector(1,0,0)" : 0,"vector(0,1,0)" : 0}
+orient15 = {"vector(0,0,1)" : 0,"vector(1,0,0)" : 0,"vector(0,1,0)" : 0}
+orient16 = {"vector(0,0,1)" : 0,"vector(1,0,0)" : 0,"vector(0,1,0)" : 0}
+orient17 = {"vector(0,0,1)" : 0,"vector(1,0,0)" : 0,"vector(0,1,0)" : 0}
+orient18 = {"vector(0,0,1)" : 0,"vector(1,0,0)" : 0,"vector(0,1,0)" : 0}
+orient19 = {"vector(0,0,1)" : 0,"vector(1,0,0)" : 0,"vector(0,1,0)" : 0}
+orient20 = {"vector(0,0,1)" : 0,"vector(1,0,0)" : 0,"vector(0,1,0)" : 0}
+orient21 = {"vector(0,0,1)" : 0,"vector(1,0,0)" : 0,"vector(0,1,0)" : 0}
+orient22 = {"vector(0,0,1)" : 0,"vector(1,0,0)" : 0,"vector(0,1,0)" : 0}
+orient23 = {"vector(0,0,1)" : 0,"vector(1,0,0)" : 0,"vector(0,1,0)" : 0}
+orient24 = {"vector(0,0,1)" : 0,"vector(1,0,0)" : 0,"vector(0,1,0)" : 0}
+orient25 = {"vector(0,0,1)" : 0,"vector(1,0,0)" : 0,"vector(0,1,0)" : 0}
 #different types of smal cubes
 cube1.pos=v1 #middle
 cube2.pos=v2 
@@ -552,18 +701,19 @@ c15 = corner_cube(v15,v15,cube15)
 c17 = corner_cube(v17,v17,cube17)
 c21 = corner_cube(v21,v21,cube21)
 
-c2 = edge_cube(v2,v2,cube2)
-c4 = edge_cube(v4,v4,cube4)
-c6 = edge_cube(v6,v6,cube6)
-c8 = edge_cube(v8,v8,cube8)
-c10 = edge_cube(v10,v10,cube10)
-c13 = edge_cube(v13,v13,cube13)
-c14 = edge_cube(v14,v14,cube14)
-c16 = edge_cube(v16,v16,cube16)
-c19 = edge_cube(v19,v19,cube19)
-c20 = edge_cube(v20,v20,cube20)
-c23 = edge_cube(v23,v23,cube23)
-c25 = edge_cube(v25,v25,cube25)
+
+c2 = edge_cube(v2,v2,cube2,orient1,orient2)
+c4 = edge_cube(v4,v4,cube4,orient3,orient4)
+c6 = edge_cube(v6,v6,cube6,orient5,orient6)
+c8 = edge_cube(v8,v8,cube8,orient7,orient8)
+c10 = edge_cube(v10,v10,cube10,orient9,orient10)
+c13 = edge_cube(v13,v13,cube13,orient11,orient12)
+c14 = edge_cube(v14,v14,cube14,orient13,orient14)
+c16 = edge_cube(v16,v16,cube16,orient15,orient16)
+c19 = edge_cube(v19,v19,cube19,orient17,orient18)
+c20 = edge_cube(v20,v20,cube20,orient19,orient20)
+c23 = edge_cube(v23,v23,cube23,orient21,orient22)
+c25 = edge_cube(v25,v25,cube25,orient23,orient24)
 #All functions forr rotations
 def front_rotation_clock():
     c1.front_turn_clock()
@@ -947,6 +1097,42 @@ def solver():
             right_rotation_clock()
             front_rotation_clock()
             back_rotation_counter()
+    def orienting_cross_pieces(pos,name):
+        if pos == vector(1,2,0):
+            right_rotation_clock()
+            left_rotation_counter()
+            front_rotation_clock()
+            front_rotation_clock()
+            right_rotation_clock()
+            left_rotation_counter()
+            down_rotation_clock()
+            cross_filler(name.position)
+        if pos == vector(0,2,-1):
+            front_rotation_clock()
+            back_rotation_counter()
+            left_rotation_clock()
+            left_rotation_clock()
+            front_rotation_counter()
+            back_rotation_clock()
+            down_rotation_clock()
+            cross_filler(name.position)
+        if pos == vector(2,2,-1):
+            front_rotation_counter()
+            back_rotation_clock()
+            right_rotation_clock()
+            right_rotation_clock()
+            front_rotation_clock()
+            back_rotation_counter()
+            down_rotation_clock()
+            cross_filler(name.position)
+        if pos == vector(1,2,-2):
+            right_rotation_clock()
+            left_rotation_counter()
+            back_rotation_clock()
+            back_rotation_clock()
+            down_rotation_clock()
+            cross_filler(name.position)
+
     while c2.position != c2.correct_position:
         if c2.position == vector(1,0,0):
             front_rotation_clock()
@@ -973,7 +1159,8 @@ def solver():
         elif c2.position == vector(0,1,-2) or c2.position == vector(2,1,-2):
             unlocking_for_white_cross(c2.position)
             cross_filler(c2.position)
-
+    while c2.orientation["vector(0,0,1)"] != c2.correct_orientation["vector(0,0,1)"] or c2.orientation["vector(0,1,0)"] != c2.correct_orientation["vector(0,1,0)"] or c2.orientation["vector(1,0,0)"] != c2.correct_orientation["vector(1,0,0)"]:
+        orienting_cross_pieces(c2.position,c2)
     while c14.position != c14.correct_position:
         if c14.position == vector(0,1,0):
             left_rotation_counter()
@@ -995,8 +1182,13 @@ def solver():
             unlocking_for_white_cross(c14.position)
         else:
             bringing_piece_from_the_top(c14.position)
-        
-
+    while c14.orientation["vector(0,0,1)"] != c14.correct_orientation["vector(0,0,1)"] or c14.orientation["vector(0,1,0)"] != c14.correct_orientation["vector(0,1,0)"] or c14.orientation["vector(1,0,0)"] != c14.correct_orientation["vector(1,0,0)"]:
+        orienting_cross_pieces(c14.position,c14)
+    
+    
+def orintation_debugger():   
+    print(c14.orientation) 
+    print(c14.correct_orientation)
 
 
 
