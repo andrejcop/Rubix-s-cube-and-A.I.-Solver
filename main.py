@@ -43,6 +43,8 @@ cube23 = make_small_cube(vector(0.5,0.5,0.5), vector(0.5,0.5,0.5), vector(0.5,0.
 cube24= make_small_cube(vector(0.5,0.5,0.5), vector(0.5,0.5,0.5), vector(0.5,0.5,0.5), color.yellow, vector(0.5,0.5,0.5), vector(0.5,0.5,0.5))
 cube25 = make_small_cube(vector(0.5,0.5,0.5), vector(0.5,0.5,0.5), vector(0.5,0.5,0.5), color.yellow, vector(0.5,0.5,0.5), color.green)
 cube26 = make_small_cube(vector(0.5,0.5,0.5), vector(0.5,0.5,0.5), vector(0.5,0.5,0.5), vector(0.5,0.5,0.5), vector(0.5,0.5,0.5), color.green)
+
+
 #Here I defined classes for different types of small cubes. corners, edges and middels ech one has coordinates and functions that changes coordinates acording to movments
 class corner_cube:
     def __init__(self, position, correct_position, name):
@@ -842,76 +844,178 @@ def left_rotation_counter():
     c25.left_turn_counter()
 
 #randomizer
-random_num1 = random.randint(200,500)
-while random_num1 >0:
-    random_num2 = random.randint(0,3)
-    random_num3 = random.randint(0,3)
-    random_num4 = random.randint(0,3)
-    random_num5 = random.randint(0,3)
-    random_num6 = random.randint(0,3)
-    random_num7 = random.randint(0,3)
-    while random_num2 > 0:
-        front_rotation_clock()
-        random_num2 -= 1
-    while random_num3 > 0:
-        top_rotation_clock()
-        random_num3 -= 1
-    while random_num4 > 0:
-        right_rotation_clock()
-        random_num4 -= 1
-    while random_num5 > 0:
-        left_rotation_clock()
-        random_num5 -= 1
-    while random_num6 > 0:
-        down_rotation_clock()
-        random_num6 -= 1
-    while random_num7 > 0:
-        back_rotation_clock()
-        random_num7 -= 1
-    random_num1 -= 1
-   
+def randomizer():
+    random_num1 = random.randint(200,500)
+    while random_num1 >0:
+        random_num2 = random.randint(0,3)
+        random_num3 = random.randint(0,3)
+        random_num4 = random.randint(0,3)
+        random_num5 = random.randint(0,3)
+        random_num6 = random.randint(0,3)
+        random_num7 = random.randint(0,3)
+        while random_num2 > 0:
+            front_rotation_clock()
+            random_num2 -= 1
+        while random_num3 > 0:
+            top_rotation_clock()
+            random_num3 -= 1
+        while random_num4 > 0:
+            right_rotation_clock()
+            random_num4 -= 1
+        while random_num5 > 0:
+            left_rotation_clock()
+            random_num5 -= 1
+        while random_num6 > 0:
+            down_rotation_clock()
+            random_num6 -= 1
+        while random_num7 > 0:
+            back_rotation_clock()
+            random_num7 -= 1
+        random_num1 -= 1
+    
 
 #A.I. algorithems to solve a cube
 
 #The cross
-def cross_filler(pos):
-    if pos == vector(3,0,-1):
-        right_rotation_clock()
-        left_rotation_counter()
-        down_rotation_counter()
-        right_rotation_counter()
-        left_rotation_clock()
-    elif pos == vector(2,0,0):
-        back_rotation_clock()
-        front_rotation_counter()
-        down_rotation_counter()
-        back_rotation_counter()
-        front_rotation_clock()
-    elif pos == vector(0,0,-1):
-        right_rotation_counter()
-        left_rotation_clock()
-        down_rotation_counter()
-        right_rotation_clock()
-        left_rotation_counter()
-    elif pos == vector(1,0,-2):
-        back_rotation_counter()
-        front_rotation_clock()
-        down_rotation_counter()
-        back_rotation_clock()
-        front_rotation_counter()
-if c2.position != c2.correct_position:
-    if c2.position == vector(1,0,0):
-        front_rotation_clock()
-        front_rotation_clock()
-    elif c2.position == vector(0,1,0):
-        front_rotation_clock()
-    elif c2.position == vector(3,2,0):
-        front_rotation_counter()
-    elif c2.position == vector(3,0,-1):
-        cross_filler(c2.position)
-    elif c2.position == vector(2,0,-2):
-        down_rotation_counter()
-        cross_filler(c2.position)
-    elif c2.position == vector(0,0,-1):
-        down_rotation_clock()
-        cross_filler(c2.position)
+def solver():
+    def cross_filler(pos):
+        if pos == vector(2,0,-1):
+            right_rotation_clock()
+            left_rotation_counter()
+            front_rotation_counter()
+            right_rotation_counter()
+            left_rotation_clock()
+        elif pos == vector(1,0,0):
+            back_rotation_counter()
+            front_rotation_clock()
+            left_rotation_counter()
+            back_rotation_clock()
+            front_rotation_counter()
+        elif pos == vector(0,0,-1):
+            right_rotation_counter()
+            left_rotation_clock()
+            down_rotation_counter()
+            right_rotation_clock()
+            left_rotation_counter()
+        elif pos == vector(1,0,-2):
+            back_rotation_counter()
+            front_rotation_clock()
+            down_rotation_counter()
+            back_rotation_clock()
+            front_rotation_counter()
+
+    def unlocking_for_white_cross(pos):
+        if pos == vector(0,1,-2):
+            back_rotation_clock()
+            down_rotation_counter()
+            back_rotation_counter()
+        if pos == vector(2,1,-2):
+            back_rotation_counter()
+            down_rotation_counter()
+            back_rotation_clock()
+        if pos == vector(0,1,0):
+            front_rotation_counter()
+            down_rotation_clock()
+            front_rotation_clock()
+        if pos == vector(2,1,0):
+            front_rotation_clock()
+            down_rotation_clock()
+            front_rotation_counter()
+
+    def bringing_piece_from_the_top(pos):
+        if pos == vector(1,2,0):
+            right_rotation_clock()
+            left_rotation_counter()
+            front_rotation_counter()
+            right_rotation_counter()
+            left_rotation_clock()
+        if pos == vector(1,2,-2):
+            right_rotation_counter()
+            left_rotation_clock()
+            back_rotation_clock()
+            right_rotation_clock()
+            left_rotation_counter()
+        if pos == vector(0,2,-1):
+            front_rotation_clock()
+            back_rotation_counter()
+            left_rotation_clock() 
+            front_rotation_counter()
+            back_rotation_clock()
+        if pos == vector(2,2,-1):  
+            front_rotation_counter()
+            back_rotation_clock()
+            right_rotation_clock()
+            front_rotation_clock()
+            back_rotation_counter()
+    while c2.position != c2.correct_position:
+        if c2.position == vector(1,0,0):
+            front_rotation_clock()
+            front_rotation_clock()
+        elif c2.position == vector(0,1,0):
+            front_rotation_clock()
+        elif c2.position == vector(2,1,0):
+            front_rotation_counter()
+        elif c2.position == vector(2,0,-1):
+            cross_filler(c2.position)
+        elif c2.position == vector(1,0,-2):
+            down_rotation_counter()
+            cross_filler(c2.position)
+        elif c2.position == vector(0,0,-1):
+            down_rotation_clock()
+            cross_filler(c2.position)
+        elif c2.position == vector(0,2,-1):
+            top_rotation_counter()
+        elif c2.position == vector(2,2,-1):
+            top_rotation_clock()
+        elif c2.position == vector(1,2,-2):
+            top_rotation_clock()
+            top_rotation_clock()
+        elif c2.position == vector(0,1,-2) or c2.position == vector(2,1,-2):
+            unlocking_for_white_cross(c2.position)
+            cross_filler(c2.position)
+
+    while c14.position != c14.correct_position:
+        if c14.position == vector(0,1,0):
+            left_rotation_counter()
+        elif c14.position == vector(0,0,-1):
+            left_rotation_counter()
+            left_rotation_counter()
+        elif c14.position == vector(0,1,-2):
+            left_rotation_clock()
+        elif c14.position == vector(1,0,0):
+            cross_filler(c14.position)
+        elif c14.position == vector(2,0,-1):
+            down_rotation_counter()
+            cross_filler(c14.position)
+        elif c14.position == vector(1,0,-2):
+            down_rotation_counter()
+            down_rotation_counter()
+            cross_filler(c14.position)
+        elif c14.position == vector(2,1,-2) or c14.position == vector(2,1,0):
+            unlocking_for_white_cross(c14.position)
+        else:
+            bringing_piece_from_the_top(c14.position)
+        
+
+
+
+
+
+
+#control buttons
+button(bind=randomizer, text="Randomize")
+scene.append_to_caption('\n\n')
+button(bind=solver, text="Solver")
+scene.append_to_caption('\n\n')
+button(bind=front_rotation_clock, text="Front Clock")
+scene.append_to_caption('\n\n')
+button(bind=back_rotation_clock, text="Back Clock")
+scene.append_to_caption('\n\n')
+button(bind=right_rotation_clock, text="right Clock")
+scene.append_to_caption('\n\n')
+button(bind=left_rotation_clock, text="left Clock")
+scene.append_to_caption('\n\n')
+button(bind=top_rotation_clock, text="top Clock")
+scene.append_to_caption('\n\n')
+button(bind=down_rotation_clock, text="down Clock")
+scene.append_to_caption('\n\n')
