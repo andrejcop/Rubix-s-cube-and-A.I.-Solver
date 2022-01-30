@@ -8,9 +8,9 @@ This was my first ever python project, meant for learning python and programing 
 2. Vpython (older versions seem to work better)
 
 ## Misc
-clone the repo
-pip install vpython
-python main.py
+1. clone the repo
+2. pip install vpython
+3. python main.py
 
-If solver gets stuck in an infinite loop Ctr + c
-If cube breaks when randomizing increase time1
+- If solver gets stuck in an infinite loop Ctr + c
+- If cube breaks when randomizing increase time1
