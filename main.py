@@ -1250,89 +1250,96 @@ c23 = edge_cube(v23,v23,cube23, orientwhite, orientwhite, orientgreen, orientgre
 c25 = edge_cube(v25,v25,cube25, orientyellow, orientyellow, orientred, orientred)
 clocks = [c1,c2,c3,c4,c6,c7,c8,c9,c10,c11,c13,c14,c15,c16,c17,c19,c20,c21,c23,c25]
 #All functions forr rotations
-#time1 = 0.1
+time1 = 0.015
 def slider(s):
     time = s
 def front_rotation_clock():
     for i in range(len(clocks)):
         clocks[i].front_turn_clock()
-    #time.sleep(time1)
+    time.sleep(time1)
 def front_rotation_counter():
     for i in range(len(clocks)):
         clocks[i].front_turn_counter()
-    #time.sleep(time1)
+    time.sleep(time1)
 
 def back_rotation_clock():
     for i in range(len(clocks)):
         clocks[i].back_turn_clock()
-    #time.sleep(time1)
+    time.sleep(time1)
 def back_rotation_counter():
     for i in range(len(clocks)):
         clocks[i].back_turn_counter()
-    #time.sleep(time1)
+    time.sleep(time1)
 
 def top_rotation_counter():
     for i in range(len(clocks)):
         clocks[i].top_turn_counter()
-    #time.sleep(time1)
+    time.sleep(time1)
 
 def top_rotation_clock():
     for i in range(len(clocks)):
         clocks[i].top_turn_clock()
-    #time.sleep(time1)
+    time.sleep(time1)
 def down_rotation_clock():
     for i in range(len(clocks)):
         clocks[i].down_turn_clock()
-    #time.sleep(time1)
+    time.sleep(time1)
 def down_rotation_counter():
     for i in range(len(clocks)):
         clocks[i].down_turn_counter()
-    #time.sleep(time1)
+    time.sleep(time1)
 
 def right_rotation_clock():
     for i in range(len(clocks)):
         clocks[i].right_turn_clock()
-    #time.sleep(time1)
+    time.sleep(time1)
 def right_rotation_counter():
     for i in range(len(clocks)):
         clocks[i].right_turn_counter()
-    #time.sleep(time1)
+    time.sleep(time1)
 
 def left_rotation_clock():
     for i in range(len(clocks)):
         clocks[i].left_turn_clock()
-    #time.sleep(time1)
+    time.sleep(time1)
 def left_rotation_counter():
     for i in range(len(clocks)):
         clocks[i].left_turn_counter()
-    #time.sleep(time1)
+    time.sleep(time1)
 
 #randomizer
 def randomizer():
-    random_num1 = random.randint(10,20)
+    time1 = 0.05
+    random_num1 = random.randint(3,5)
     while random_num1 >0:
-        random_num2 = random.randint(0,3)
-        random_num3 = random.randint(0,3)
-        random_num4 = random.randint(0,3)
-        random_num5 = random.randint(0,3)
-        random_num6 = random.randint(0,3)
-        random_num7 = random.randint(0,3)
+        random_num2 = random.randint(0,2)
+        random_num3 = random.randint(0,2)
+        random_num4 = random.randint(0,2)
+        random_num5 = random.randint(0,2)
+        random_num6 = random.randint(0,2)
+        random_num7 = random.randint(0,2)
         while random_num2 > 0:
+            time.sleep(time1)
             front_rotation_clock()
             random_num2 -= 1
         while random_num3 > 0:
+            time.sleep(time1)
             top_rotation_clock()
             random_num3 -= 1
         while random_num4 > 0:
+            time.sleep(time1)
             right_rotation_clock()
             random_num4 -= 1
         while random_num5 > 0:
+            time.sleep(time1)
             left_rotation_clock()
             random_num5 -= 1
         while random_num6 > 0:
+            time.sleep(time1)
             down_rotation_clock()
             random_num6 -= 1
         while random_num7 > 0:
+            time.sleep(time1)
             back_rotation_clock()
             random_num7 -= 1
         random_num1 -= 1
@@ -2080,4 +2087,7 @@ button(bind=right_rotation_clock, text="right Clock")
 button(bind=left_rotation_clock, text="left Clock")
 button(bind=top_rotation_clock, text="top Clock")
 button(bind=down_rotation_clock, text="down Clock")
+
+while(1):
+    time.sleep(100)
 
